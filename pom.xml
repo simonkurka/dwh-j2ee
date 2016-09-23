@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>AKTIN : DWH Server : J2EE Application</name>
+	<packaging>ear</packaging>
+
+	<groupId>org.aktin.dwh</groupId>
+	<artifactId>dwh-j2ee</artifactId>
+	<version>0.3-SNAPSHOT</version>
+
+	<description>
+		The data warehouse J2EE application contains
+		all modules which are to be deployed on the
+		data warehouse application server.
+	</description>
+	
+	
+	<parent>
+		<groupId>org.aktin.dwh</groupId>
+		<artifactId>server</artifactId>
+		<version>0.3-SNAPSHOT</version>
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+  
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<defaultLibBundleDir>lib/</defaultLibBundleDir>
+					<skinnyWars>true</skinnyWars>
+					<modules>
+						<webModule>
+							<groupId>org.aktin</groupId>
+							<artifactId>cda-import</artifactId>
+							<contextRoot>/aktin</contextRoot>
+						</webModule>
+					</modules>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Created-On>${build.timestamp}</Created-On>
+							<Build-Number>${buildNumber}</Build-Number>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.aktin</groupId>
+			<artifactId>cda-import</artifactId>
+			<version>0.7-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		
+	</dependencies>
+</project>
