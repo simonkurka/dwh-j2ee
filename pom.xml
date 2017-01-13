@@ -54,8 +54,20 @@
 						<webModule>
 							<groupId>org.aktin</groupId>
 							<artifactId>cda-import</artifactId>
-							<contextRoot>/aktin</contextRoot>
+							<contextRoot>/aktin/cda</contextRoot>
 						</webModule>
+						<webModule>
+							<groupId>org.aktin.dwh</groupId>
+							<artifactId>admin-gui</artifactId>
+							<contextRoot>/aktin/admin</contextRoot>
+						</webModule>
+						<jarModule>
+							<groupId>org.aktin.dwh</groupId>
+							<artifactId>dwh-db</artifactId>
+							<bundleDir>/</bundleDir>
+							<includeInApplicationXml>true</includeInApplicationXml>
+							<!-- TODO use liquibase CDE, see dwh-db/README -->
+						</jarModule>
 					</modules>
 					<archive>
 						<manifest>
@@ -76,6 +88,49 @@
 			<artifactId>cda-import</artifactId>
 			<version>0.7-SNAPSHOT</version>
 			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.aktin.dwh</groupId>
+			<artifactId>dwh-db</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aktin.dwh</groupId>
+			<artifactId>dwh-prefs</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- GUI -->
+		<dependency>
+			<groupId>org.aktin.dwh</groupId>
+			<artifactId>admin-gui</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<!-- reporting -->
+		<dependency>
+			<groupId>org.aktin</groupId>
+			<artifactId>report-manager</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aktin</groupId>
+			<artifactId>report-archive</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aktin.reports</groupId>
+			<artifactId>aktin-monthly</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- TODO add duplicate transitive dependencies from wars -->
+		<dependency>
+			<groupId>de.sekmi.histream</groupId>
+			<artifactId>histream-i2b2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aktin</groupId>
+			<artifactId>dwh-api</artifactId>
+			<version>0.1-SNAPSHOT</version>
 		</dependency>
 		
 	</dependencies>
