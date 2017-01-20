@@ -1,6 +1,15 @@
 Software package for deployment of the data warehouse
 =====================================================
 
+Building
+--------
+To build the dwh-j2ee module, the following other modules
+must be previously built: dwh-api, dwh-db, dwh-import, dwh-query, 
+broker, dwh-admin.
+
+This can be done automatically, by running `mvn -f dwh.xml clean install`
+in the parent project.
+
 Manual deployment
 -----------------
 For manual deployment of the EAR bundle, the
@@ -37,7 +46,7 @@ data-source add --name=$name --jndi-name=$jndiname --driver-name=$driver --jta=f
 
 4. Add email configuration to wildfly
 ```
-TODO
+TODO (can be done later)
 ```
 
 5. Add AKTIN configuration parameters: 
