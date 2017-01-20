@@ -68,6 +68,10 @@
 							<includeInApplicationXml>true</includeInApplicationXml>
 							<!-- TODO use liquibase CDE, see dwh-db/README -->
 						</jarModule>
+						<jarModule>
+							<groupId>org.aktin</groupId>
+							<artifactId>report-manager</artifactId>
+						</jarModule>
 					</modules>
 					<archive>
 						<manifest>
@@ -127,6 +131,11 @@
 			<groupId>de.sekmi.histream</groupId>
 			<artifactId>histream-i2b2</artifactId>
 		</dependency>
+		<!-- should be included transitively from report-manager 
+		<dependency>
+			<groupId>de.sekmi.histream</groupId>
+			<artifactId>histream-export</artifactId>
+		</dependency>-->
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>dwh-api</artifactId>
