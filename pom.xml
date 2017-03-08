@@ -21,7 +21,7 @@
 	</parent>
 	
 	<scm>
-		<developerConnection>git@github.com:aktin/dwh-j2ee.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:aktin/dwh-j2ee.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
