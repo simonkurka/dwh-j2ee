@@ -119,14 +119,14 @@
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>admin-gui</artifactId>
-			<version>0.1</version>
+			<version>0.2-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 		<!-- reporting -->
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-manager</artifactId>
-			<version>0.1</version>
+			<version>0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
@@ -136,7 +136,7 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-schedule</artifactId>
-			<version>0.1</version>
+			<version>0.2-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
