@@ -84,6 +84,10 @@
 							<groupId>org.aktin</groupId>
 							<artifactId>report-schedule</artifactId>
 						</ejbModule>
+						<ejbModule>
+							<groupId>org.aktin</groupId>
+							<artifactId>request-manager</artifactId>
+						</ejbModule>
 					</modules>
 					<archive>
 						<manifest>
@@ -108,7 +112,7 @@
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>dwh-db</artifactId>
-			<version>0.1</version>
+			<version>0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
@@ -119,7 +123,7 @@
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>admin-gui</artifactId>
-			<version>0.2.1</version>
+			<version>0.3-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 		<!-- reporting -->
@@ -142,7 +146,7 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>request-manager</artifactId>
-			<version>0.1</version>
+			<version>0.3-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
