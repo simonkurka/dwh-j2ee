@@ -17,7 +17,7 @@
 	<parent>
 		<groupId>org.aktin</groupId>
 		<artifactId>aktin</artifactId>
-		<version>0.5</version>
+		<version>0.6</version>
 	</parent>
 	
 	<scm>
@@ -106,53 +106,53 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>cda-import</artifactId>
-			<version>0.8rc2</version>
+			<version>0.8rc3</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>dwh-db</artifactId>
-			<version>0.3</version>
+			<version>0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>dwh-prefs</artifactId>
-			<version>0.3</version>
+			<version>0.4</version>
 		</dependency>
 		<!-- GUI -->
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>admin-gui</artifactId>
-			<version>0.3rc2</version>
+			<version>0.3rc3</version>
 			<type>war</type>
 		</dependency>
 		<!-- reporting -->
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-manager</artifactId>
-			<version>0.3rc2</version>
+			<version>0.3rc3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-archive</artifactId>
-			<version>0.3rc2</version>
+			<version>0.3rc3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-schedule</artifactId>
-			<version>0.3rc2</version>
+			<version>0.3rc3</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>request-manager</artifactId>
-			<version>0.3rc2</version>
+			<version>0.3rc3</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.reports</groupId>
 			<artifactId>aktin-monthly</artifactId>
-			<version>0.3rc2</version>
+			<version>0.3rc3</version>
 		</dependency>
 		<!-- TODO add duplicate transitive dependencies from wars -->
 		<dependency>
