@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>cda-import</artifactId>
-			<version>0.8rc3</version>
+			<version>0.8</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
@@ -130,29 +130,29 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-manager</artifactId>
-			<version>0.3rc3</version>
+			<version>0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-archive</artifactId>
-			<version>0.3rc3</version>
+			<version>0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-schedule</artifactId>
-			<version>0.3rc3</version>
+			<version>0.3</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>request-manager</artifactId>
-			<version>0.3rc3</version>
+			<version>0.3</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.reports</groupId>
 			<artifactId>aktin-monthly</artifactId>
-			<version>0.3rc3</version>
+			<version>0.3</version>
 		</dependency>
 		<!-- TODO add duplicate transitive dependencies from wars -->
 		<dependency>
