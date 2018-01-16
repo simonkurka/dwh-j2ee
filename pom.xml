@@ -5,7 +5,7 @@
 
 	<groupId>org.aktin.dwh</groupId>
 	<artifactId>dwh-j2ee</artifactId>
-	<version>0.9-SNAPSHOT</version>
+	<version>0.9rc1</version>
 
 	<description>
 		The data warehouse J2EE application contains
@@ -17,12 +17,12 @@
 	<parent>
 		<groupId>org.aktin</groupId>
 		<artifactId>aktin</artifactId>
-		<version>0.7-SNAPSHOT</version>
+		<version>0.7</version>
 	</parent>
 	
 	<scm>
 		<developerConnection>scm:git:git@github.com:aktin/dwh-j2ee.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v0.9rc1</tag>
 	</scm>
 
 	<properties>
@@ -106,53 +106,53 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>cda-import</artifactId>
-			<version>0.9-SNAPSHOT</version>
+			<version>0.9rc1</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>dwh-db</artifactId>
-			<version>0.5-SNAPSHOT</version>
+			<version>0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>dwh-prefs</artifactId>
-			<version>0.5-SNAPSHOT</version>
+			<version>0.5</version>
 		</dependency>
 		<!-- GUI -->
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>admin-gui</artifactId>
-			<version>0.4-SNAPSHOT</version>
+			<version>0.4rc1</version>
 			<type>war</type>
 		</dependency>
 		<!-- reporting -->
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-manager</artifactId>
-			<version>0.4-SNAPSHOT</version>
+			<version>0.4rc1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-archive</artifactId>
-			<version>0.4-SNAPSHOT</version>
+			<version>0.4rc1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>report-schedule</artifactId>
-			<version>0.4-SNAPSHOT</version>
+			<version>0.4rc1</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>request-manager</artifactId>
-			<version>0.4-SNAPSHOT</version>
+			<version>0.4rc1</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>org.aktin.reports</groupId>
 			<artifactId>aktin-monthly</artifactId>
-			<version>0.4-SNAPSHOT</version>
+			<version>0.4rc1</version>
 		</dependency>
 		<!-- TODO add duplicate transitive dependencies from wars -->
 		<dependency>
@@ -167,7 +167,7 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>dwh-api</artifactId>
-			<version>0.3-SNAPSHOT</version>
+			<version>0.3</version>
 		</dependency>
 		
 	</dependencies>
