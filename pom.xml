@@ -5,7 +5,7 @@
 
 	<groupId>org.aktin.dwh</groupId>
 	<artifactId>dwh-j2ee</artifactId>
-	<version>0.10rc2-SNAPSHOT</version>
+	<version>0.10</version>
 
 	<description>
 		The data warehouse J2EE application contains
@@ -22,7 +22,7 @@
 	
 	<scm>
 		<developerConnection>scm:git:git@github.com:aktin/dwh-j2ee.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v0.10</tag>
 	</scm>
 
 	<properties>
