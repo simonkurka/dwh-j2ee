@@ -88,6 +88,10 @@
 							<groupId>org.aktin</groupId>
 							<artifactId>request-manager</artifactId>
 						</ejbModule>
+						<ejbModule>
+							<groupId>org.aktin</groupId>
+							<artifactId>study-manager</artifactId>
+						</ejbModule>
 					</modules>
 					<archive>
 						<manifest>
@@ -150,6 +154,12 @@
 			<type>ejb</type>
 		</dependency>
 		<dependency>
+			<groupId>org.aktin</groupId>
+			<artifactId>study-manager</artifactId>
+			<version>0.6-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
 			<groupId>org.aktin.reports</groupId>
 			<artifactId>aktin-monthly</artifactId>
 			<version>0.6-SNAPSHOT</version>
@@ -167,7 +177,7 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>dwh-api</artifactId>
-			<version>0.3</version>
+			<version>0.4-SNAPSHOT</version>
 		</dependency>
 		
 	</dependencies>
