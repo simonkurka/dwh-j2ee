@@ -121,7 +121,7 @@
 		<dependency>
 			<groupId>org.aktin.dwh</groupId>
 			<artifactId>dwh-prefs</artifactId>
-			<version>0.5</version>
+			<version>0.6-SNAPSHOT</version>
 		</dependency>
 		<!-- GUI -->
 		<dependency>
