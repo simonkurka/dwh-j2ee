@@ -110,7 +110,7 @@
 		<dependency>
 			<groupId>org.aktin</groupId>
 			<artifactId>cda-import</artifactId>
-			<version>0.11nomerge</version>
+			<version>0.12</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
