@@ -20,17 +20,17 @@
 		<version>0.10-SNAPSHOT</version>
 	</parent>
 	
-	<properties>
-		<project.scm.id>github.com</project.scm.id>
-	</properties>
 	<scm>
 		<developerConnection>scm:git:git@github.com:aktin/dwh-j2ee.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<properties>
+		<project.scm.id>github.com</project.scm.id>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+
 	<profiles>
 		<profile>
 			<id>functionality-full</id>
