@@ -110,35 +110,35 @@
 				<dependency>
 					<groupId>org.aktin</groupId>
 					<artifactId>report-manager</artifactId>
-					<version>0.9</version>
+					<version>0.9.1</version>
 				</dependency>
 				<dependency>
 					<groupId>org.aktin</groupId>
 					<artifactId>report-archive</artifactId>
-					<version>0.9</version>
+					<version>0.9.1</version>
 				</dependency>
 				<dependency>
 					<groupId>org.aktin</groupId>
 					<artifactId>report-schedule</artifactId>
-					<version>0.9</version>
+					<version>0.9.1</version>
 					<type>ejb</type>
 				</dependency>
 				<dependency>
 					<groupId>org.aktin</groupId>
 					<artifactId>request-manager</artifactId>
-					<version>0.9</version>
+					<version>0.9.1</version>
 					<type>ejb</type>
 				</dependency>
 				<dependency>
 					<groupId>org.aktin</groupId>
 					<artifactId>study-manager</artifactId>
-					<version>0.9</version>
+					<version>0.9.1</version>
 					<type>ejb</type>
 				</dependency>
 				<dependency>
 					<groupId>org.aktin.reports</groupId>
 					<artifactId>aktin-monthly</artifactId>
-					<version>0.9</version>
+					<version>0.9.1</version>
 				</dependency>
 				<!-- TODO add duplicate transitive dependencies from wars -->
 				<dependency>
