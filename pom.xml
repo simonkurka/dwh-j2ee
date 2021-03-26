@@ -1,226 +1,227 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<name>AKTIN : DWH Server : J2EE Application</name>
-	<packaging>ear</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>AKTIN : DWH Server : J2EE Application</name>
+    <packaging>ear</packaging>
 
-	<groupId>org.aktin.dwh</groupId>
-	<artifactId>dwh-j2ee</artifactId>
-	<version>1.3rc3-SNAPSHOT</version>
+    <groupId>org.aktin.dwh</groupId>
+    <artifactId>dwh-j2ee</artifactId>
+    <version>1.4rc1-SNAPSHOT</version>
 
-	<description>
-		The data warehouse J2EE application contains
-		all modules which are to be deployed on the
-		data warehouse application server.
-	</description>
-	
-	
-	<parent>
-		<groupId>org.aktin</groupId>
-		<artifactId>aktin</artifactId>
-		<version>0.10</version>
-	</parent>
-	
-	<scm>
-		<developerConnection>scm:git:git@github.com:aktin/dwh-j2ee.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
-	<properties>
-		<project.scm.id>github.com</project.scm.id>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    <description>
+        The data warehouse J2EE application contains
+        all modules which are to be deployed on the
+        data warehouse application server.
+    </description>
 
 
-	<profiles>
-		<profile>
-			<id>functionality-full</id>
-			<activation>
-				<property>
-					<name>!functionality</name>
-				</property>
-			</activation>
-		
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-ear-plugin</artifactId>
-						<version>2.10.1</version>
-						<configuration>
-							<version>7</version>
-							<defaultLibBundleDir>lib/</defaultLibBundleDir>
-							<skinnyWars>true</skinnyWars>
-							<modules>
-								<webModule>
-									<groupId>org.aktin</groupId>
-									<artifactId>cda-import</artifactId>
-									<contextRoot>/aktin/cda</contextRoot>
-								</webModule>
-								<webModule>
-									<groupId>org.aktin.dwh</groupId>
-									<artifactId>admin-gui</artifactId>
-									<contextRoot>/aktin/admin</contextRoot>
-								</webModule>
-								<jarModule>
-									<groupId>org.aktin.dwh</groupId>
-									<artifactId>dwh-db</artifactId>
-									<bundleDir>/</bundleDir>
-									<includeInApplicationXml>true</includeInApplicationXml>
-									<!-- TODO use liquibase CDE, see dwh-db/README -->
-								</jarModule><!--
+    <parent>
+        <groupId>org.aktin</groupId>
+        <artifactId>aktin</artifactId>
+        <version>0.11-SNAPSHOT</version>
+    </parent>
+
+    <scm>
+        <developerConnection>scm:git:git@github.com:aktin/dwh-j2ee.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <project.scm.id>github.com</project.scm.id>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <profiles>
+        <profile>
+            <id>functionality-full</id>
+            <activation>
+                <property>
+                    <name>!functionality</name>
+                </property>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>2.10.1</version>
+                        <configuration>
+                            <version>7</version>
+                            <defaultLibBundleDir>lib/</defaultLibBundleDir>
+                            <skinnyWars>true</skinnyWars>
+                            <modules>
+                                <webModule>
+                                    <groupId>org.aktin</groupId>
+                                    <artifactId>cda-import</artifactId>
+                                    <contextRoot>/aktin/cda</contextRoot>
+                                </webModule>
+                                <webModule>
+                                    <groupId>org.aktin.dwh</groupId>
+                                    <artifactId>admin-gui</artifactId>
+                                    <contextRoot>/aktin/admin</contextRoot>
+                                </webModule>
+                                <jarModule>
+                                    <groupId>org.aktin.dwh</groupId>
+                                    <artifactId>dwh-db</artifactId>
+                                    <bundleDir>/</bundleDir>
+                                    <includeInApplicationXml>true</includeInApplicationXml>
+                                    <!-- TODO use liquibase CDE, see dwh-db/README -->
+                                </jarModule><!--
 								<jarModule>
 									<groupId>org.aktin</groupId>
 									<artifactId>report-manager</artifactId>
 								</jarModule>-->
-								<ejbModule>
-									<groupId>org.aktin</groupId>
-									<artifactId>report-schedule</artifactId>
-								</ejbModule>
-								<ejbModule>
-									<groupId>org.aktin</groupId>
-									<artifactId>request-manager</artifactId>
-								</ejbModule>
-								<ejbModule>
-									<groupId>org.aktin</groupId>
-									<artifactId>study-manager</artifactId>
-								</ejbModule>
-							</modules>
-							<archive>
-								<manifest>
-									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-								</manifest>
-								<manifestEntries>
-									<Created-On>${build.timestamp}</Created-On>
-									<Build-Number>${buildNumber}</Build-Number>
-								</manifestEntries>
-							</archive>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-			<dependencies>
-				<!-- GUI -->
-				<dependency>
-					<groupId>org.aktin.dwh</groupId>
-					<artifactId>admin-gui</artifactId>
-					<version>0.9-SNAPSHOT</version>
-					<type>war</type>
-				</dependency>
-				<!-- reporting -->
-				<dependency>
-					<groupId>org.aktin</groupId>
-					<artifactId>report-manager</artifactId>
-					<version>0.9.1</version>
-				</dependency>
-				<dependency>
-					<groupId>org.aktin</groupId>
-					<artifactId>report-archive</artifactId>
-					<version>0.9.1</version>
-				</dependency>
-				<dependency>
-					<groupId>org.aktin</groupId>
-					<artifactId>report-schedule</artifactId>
-					<version>0.9.1</version>
-					<type>ejb</type>
-				</dependency>
-				<dependency>
-					<groupId>org.aktin</groupId>
-					<artifactId>request-manager</artifactId>
-					<version>0.9.1</version>
-					<type>ejb</type>
-				</dependency>
-				<dependency>
-					<groupId>org.aktin</groupId>
-					<artifactId>study-manager</artifactId>
-					<version>0.9.1</version>
-					<type>ejb</type>
-				</dependency>
-				<dependency>
-					<groupId>org.aktin.reports</groupId>
-					<artifactId>aktin-monthly</artifactId>
-					<version>0.9.1</version>
-				</dependency>
-				<!-- TODO add duplicate transitive dependencies from wars -->
-				<dependency>
-					<groupId>de.sekmi.histream</groupId>
-					<artifactId>histream-i2b2</artifactId>
-				</dependency>
-				<!-- should be included transitively from report-manager 
-				<dependency>
-					<groupId>de.sekmi.histream</groupId>
-					<artifactId>histream-export</artifactId>
-				</dependency>-->
-				
-			</dependencies>
-		</profile>
-		<profile>
-			<id>functionality-min</id>
-			<activation>
-				<property>
-					<name>functionality</name>
-					<value>min</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-ear-plugin</artifactId>
-						<version>2.10.1</version>
-						<configuration>
-							<version>7</version>
-							<defaultLibBundleDir>lib/</defaultLibBundleDir>
-							<skinnyWars>true</skinnyWars>
-							<modules>
-								<webModule>
-									<groupId>org.aktin</groupId>
-									<artifactId>cda-import</artifactId>
-									<contextRoot>/aktin/cda</contextRoot>
-								</webModule>
-								<jarModule>
-									<groupId>org.aktin.dwh</groupId>
-									<artifactId>dwh-db</artifactId>
-									<bundleDir>/</bundleDir>
-									<includeInApplicationXml>true</includeInApplicationXml>
-								</jarModule>
-							</modules>
-							<archive>
-								<manifest>
-									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-								</manifest>
-								<manifestEntries>
-									<Created-On>${build.timestamp}</Created-On>
-									<Build-Number>${buildNumber}</Build-Number>
-								</manifestEntries>
-							</archive>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+                                <ejbModule>
+                                    <groupId>org.aktin</groupId>
+                                    <artifactId>report-schedule</artifactId>
+                                </ejbModule>
+                                <ejbModule>
+                                    <groupId>org.aktin</groupId>
+                                    <artifactId>request-manager</artifactId>
+                                </ejbModule>
+                                <ejbModule>
+                                    <groupId>org.aktin</groupId>
+                                    <artifactId>study-manager</artifactId>
+                                </ejbModule>
+                            </modules>
+                            <archive>
+                                <manifest>
+                                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                </manifest>
+                                <manifestEntries>
+                                    <Created-On>${build.timestamp}</Created-On>
+                                    <Build-Number>${buildNumber}</Build-Number>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <!-- GUI -->
+                <dependency>
+                    <groupId>org.aktin.dwh</groupId>
+                    <artifactId>admin-gui</artifactId>
+                    <version>0.9-SNAPSHOT</version>
+                    <type>war</type>
+                </dependency>
+                <!-- reporting -->
+                <dependency>
+                    <groupId>org.aktin</groupId>
+                    <artifactId>report-manager</artifactId>
+                    <version>0.10-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.aktin</groupId>
+                    <artifactId>report-archive</artifactId>
+                    <version>0.10-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.aktin</groupId>
+                    <artifactId>report-schedule</artifactId>
+                    <version>0.10-SNAPSHOT</version>
+                    <type>ejb</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.aktin</groupId>
+                    <artifactId>request-manager</artifactId>
+                    <version>0.10-SNAPSHOT</version>
+                    <type>ejb</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.aktin</groupId>
+                    <artifactId>study-manager</artifactId>
+                    <version>0.10-SNAPSHOT</version>
+                    <type>ejb</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.aktin.reports</groupId>
+                    <artifactId>aktin-monthly</artifactId>
+                    <version>0.10-SNAPSHOT</version>
+                </dependency>
+                <!-- TODO add duplicate transitive dependencies from wars -->
+                <dependency>
+                    <groupId>de.sekmi.histream</groupId>
+                    <artifactId>histream-i2b2</artifactId>
+                </dependency>
+                <!-- should be included transitively from report-manager
+                <dependency>
+                    <groupId>de.sekmi.histream</groupId>
+                    <artifactId>histream-export</artifactId>
+                </dependency>-->
 
-	<dependencies>
-		<dependency>
-			<groupId>org.aktin</groupId>
-			<artifactId>dwh-api</artifactId>
-			<version>0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aktin</groupId>
-			<artifactId>cda-import</artifactId>
-			<version>0.14</version>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>org.aktin.dwh</groupId>
-			<artifactId>dwh-db</artifactId>
-			<version>0.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aktin.dwh</groupId>
-			<artifactId>dwh-prefs</artifactId>
-			<version>0.8</version>
-		</dependency>
-	</dependencies>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>functionality-min</id>
+            <activation>
+                <property>
+                    <name>functionality</name>
+                    <value>min</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>2.10.1</version>
+                        <configuration>
+                            <version>7</version>
+                            <defaultLibBundleDir>lib/</defaultLibBundleDir>
+                            <skinnyWars>true</skinnyWars>
+                            <modules>
+                                <webModule>
+                                    <groupId>org.aktin</groupId>
+                                    <artifactId>cda-import</artifactId>
+                                    <contextRoot>/aktin/cda</contextRoot>
+                                </webModule>
+                                <jarModule>
+                                    <groupId>org.aktin.dwh</groupId>
+                                    <artifactId>dwh-db</artifactId>
+                                    <bundleDir>/</bundleDir>
+                                    <includeInApplicationXml>true</includeInApplicationXml>
+                                </jarModule>
+                            </modules>
+                            <archive>
+                                <manifest>
+                                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                </manifest>
+                                <manifestEntries>
+                                    <Created-On>${build.timestamp}</Created-On>
+                                    <Build-Number>${buildNumber}</Build-Number>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.aktin</groupId>
+            <artifactId>dwh-api</artifactId>
+            <version>0.7-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aktin</groupId>
+            <artifactId>cda-import</artifactId>
+            <version>0.15-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.aktin.dwh</groupId>
+            <artifactId>dwh-db</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aktin.dwh</groupId>
+            <artifactId>dwh-prefs</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
