@@ -13,7 +13,6 @@
         data warehouse application server.
     </description>
 
-
     <parent>
         <groupId>org.aktin</groupId>
         <artifactId>aktin</artifactId>
@@ -30,6 +29,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>aktin-repo</id>
+            <name>AKTIN.org</name>
+            <url>https://aktin.org/software/repo/</url>
+        </repository>
+    </repositories>
 
     <profiles>
         <profile>
