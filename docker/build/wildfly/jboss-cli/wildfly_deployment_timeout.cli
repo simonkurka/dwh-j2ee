@@ -1,0 +1,2 @@
+/system-property=jboss.as.management.blocking.timeout:add(value=900)
+/subsystem=deployment-scanner/scanner=default:write-attribute(name=deployment-timeout,value=900)
