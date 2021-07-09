@@ -1,0 +1,5 @@
+/subsystem=logging/root-logger=ROOT:remove-handler(name="FILE")
+/subsystem=logging/root-logger=ROOT:remove-handler(name="CONSOLE")
+
+/subsystem=logging/size-rotating-file-handler=srf:add(named-formatter="PATTERN", file={"relative-to"=>"jboss.server.log.dir", "path"=>"server.log"}, autoflush=true, max-backup-index=64, rotate-size=50m, rotate-on-boot=true)
+/subsystem=logging/root-logger=ROOT:add-handler(name="srf")

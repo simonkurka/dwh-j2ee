@@ -1,0 +1,30 @@
+services:
+  database:
+    image: ${IMAGE_NAMESPACE}/dwh-j2ee-database
+    build: ./build/database
+    volumes:
+      - ${LOG_DIR}/postgres:/var/log/postgres
+      - ${DB_DIR}:/var/lib/postgresql/data
+    healthcheck:
+      test: >
+        psql -U postgres -lqt | cut -d \| -f 1 | grep -qw aktin
+      interval: 1s
+      timeout: 1s
+      retries: 60
+  httpd:
+    image: ${IMAGE_NAMESPACE}/dwh-j2ee-httpd
+    build: ./build/httpd
+    volumes:
+      - ${LOG_DIR}/apache:/var/log/apache2
+    ports:
+      - "8080:80"
+  wildfly:
+    image: ${IMAGE_NAMESPACE}/dwh-j2ee-wildfly
+    build: ./build/wildfly
+    volumes:
+      - ${LOG_DIR}/wildfly:/opt/jboss/wildfly/standalone/log
+      - ${AKTIN_PROPERTIES}:/opt/jboss/wildfly/standalone/configuration/aktin.properties
+      - ${AKTIN_DIR}:/var/lib/aktin
+    depends_on:
+      database:
+        condition: service_healthy

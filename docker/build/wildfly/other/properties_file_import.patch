@@ -1,0 +1,6 @@
+46a47,51
+> # file import data and script paths, script processing timeout in ms
+> import.data.path=/var/lib/aktin/import
+> import.script.path=/var/lib/aktin/import-scripts
+> import.script.timeout=10800000
+> 

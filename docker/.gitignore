@@ -1,0 +1,4 @@
+log.d/
+aktin.d/
+pgdata/
+build/wildfly/*.ear
