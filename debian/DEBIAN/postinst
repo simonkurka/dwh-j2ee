@@ -1,0 +1,46 @@
+#!/bin/bash
+set -e
+# activate php-curl extension for apache2
+if [[ -n $(grep ";extension=curl" /etc/php/*/apache2/php.ini) ]]; then
+	echo -e "${YEL}PHP-curl für apache2 wird aktiviert.${WHI}"
+	sed -i 's/;extension=curl/extension=curl/' /etc/php/*/apache2/php.ini
+else
+	echo -e "${ORA}PHP-curl für apache2 wurde bereits aktiviert.${WHI}"
+fi
+a2enmod proxy_http
+a2enconf aktin-j2ee-reverse-proxy
+service apache2 reload
+# count databases with name i2b2
+if  [[ $(sudo -u postgres psql -l | grep "i2b2" | wc -l) == 0 ]]; then
+
+	# create database i2b2 and respective users
+	echo -e "\e[1;33mEine Datenbank mit Namen i2b2 und entsprechenden Usern wird erstellt.\e[0m"
+	sudo -u postgres psql -v ON_ERROR_STOP=1 -f /usr/share/aktin-dwh/sql/i2b2_postgres_init.sql
+
+	# build i2b2 data and load into database
+	echo -e "\e[1;33mDaten werden in die Datenbank i2b2 eingelesen.\e[0m"
+	sudo -u postgres psql -d i2b2 -f /usr/share/aktin-dwh/sql/i2b2_db.sql
+else
+	echo -e "\e[0;33mDie Installation der i2b2-Datenbank wurde bereits durchgeführt.\e[0m"
+fi
+
+# count databases with name aktin
+if  [[ $(sudo -u postgres psql -l | grep "aktin" | wc -l) == 0 ]]; then
+
+	# add aktin data to i2b2 database
+	echo -e "\e[1;33mAKTIN-Daten werden der Datenbank i2b2 hinzugefügt.\e[0m"
+	sudo -u postgres psql -d i2b2 -v ON_ERROR_STOP=1 -f /usr/share/aktin-dwh/sql/addon_i2b2metadata.i2b2.sql
+	sudo -u postgres psql -d i2b2 -v ON_ERROR_STOP=1 -f /usr/share/aktin-dwh/sql/addon_i2b2crcdata.concept_dimension.sql
+
+	# create database aktin and respective user
+	echo -e "\e[1;33mEine Datenbank mit Namen aktin und entsprechendem User wird erstellt.\e[0m"
+	sudo -u postgres psql -v ON_ERROR_STOP=1 -f /usr/share/aktin-dwh/sql/aktin_postgres_init.sql
+else
+	echo -e "\e[0;33mDie Integration der AKTIN-Datenbank wurde bereits durchgeführt.\e[0m"
+fi
+id -u wildfly >/dev/null || adduser --system --group --disabled-login --home /var/lib/wildfly wildfly
+chown -R wildfly:wildfly /opt/wildfly /var/lib/aktin
+systemctl daemon-reload
+systemctl enable wildfly
+systemctl start wildfly
+
