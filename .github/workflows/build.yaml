@@ -60,8 +60,8 @@ jobs:
           context: docker/build/${{ github.job }}
           file: docker/build/${{ github.job }}/Dockerfile
           tags: |
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job#docker-}:latest
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job#docker-}:${{ steps.prep.outputs.version }}
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job:7}:latest
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job:7}:${{ steps.prep.outputs.version }}
           push: true
   docker-httpd:
     runs-on: ubuntu-latest
@@ -87,8 +87,8 @@ jobs:
           context: docker/build/${{ github.job }}
           file: docker/build/${{ github.job }}/Dockerfile
           tags: |
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job#docker-}:latest
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job#docker-}:${{ steps.prep.outputs.version }}
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job:7}:latest
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job:7}:${{ steps.prep.outputs.version }}
           push: true
   docker-wildfly:
     runs-on: ubuntu-latest
@@ -120,8 +120,8 @@ jobs:
           context: docker/build/${{ github.job }}
           file: docker/build/${{ github.job }}/Dockerfile
           tags: |
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job#docker-}:latest
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job#docker-}:${{ steps.prep.outputs.version }}
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job:7}:latest
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${github.job:7}:${{ steps.prep.outputs.version }}
           push: true
   deb:
     runs-on: ubuntu-latest
