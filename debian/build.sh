@@ -10,8 +10,8 @@ cp -r ./DEBIAN ./$BUILDDIR/DEBIAN
 # Download i2b2 webclient
 #
 mkdir -p ./$BUILDDIR/var/www/html
-wget https://github.com/i2b2/i2b2-webclient/archive/v1.7.12a.0002.zip -P /tmp
-unzip /tmp/v1.7.12a.0002.zip -d ./$BUILDDIR/var/www/html
+wget -qO /tmp/i2b2-webclient.zip https://github.com/i2b2/i2b2-webclient/archive/v1.7.12a.0002.zip
+unzip -qd ./$BUILDDIR/var/www/html /tmp/i2b2-webclient.zip
 mv ./$BUILDDIR/var/www/html/i2b2-webclient-* ./$BUILDDIR/var/www/html/webclient
 
 sed -i 's|name: \"HarvardDemo\",|name: \"AKTIN\",|' ./$BUILDDIR/var/www/html/webclient/i2b2_config_data.js
@@ -34,8 +34,8 @@ EOF
 # Download wildfly
 #
 mkdir -p ./$BUILDDIR/opt
-wget https://download.jboss.org/wildfly/18.0.0.Final/wildfly-18.0.0.Final.zip -P /tmp
-unzip /tmp/wildfly-$WILDFLY_VERSION.zip -d ./$BUILDDIR/opt
+wget -qO /tmp/wildfly.zip https://download.jboss.org/wildfly/18.0.0.Final/wildfly-18.0.0.Final.zip
+unzip -qd ./$BUILDDIR/opt /tmp/wildfly.zip
 mv ./$BUILDDIR/opt/wildfly-* ./$BUILDDIR/opt/wildfly
 
 mkdir -p ./$BUILDDIR/lib/systemd/system ./$BUILDDIR/var/lib/aktin ./$BUILDDIR/etc/wildfly
@@ -52,8 +52,8 @@ sed -i 's|<rotate-size value="50m"/>|<rotate-size value="1g"/>|' ./$BUILDDIR/opt
 
 patch -p3 -d ./$BUILDDIR/opt/wildfly < ./standalone.xml.patch
 
-wget https://www.aktin.org/software/repo/org/i2b2/1.7.12a/i2b2.war -P ./$BUILDDIR/opt/wildfly/standalone/deployments/
-wget https://jdbc.postgresql.org/download/postgresql-42.2.8.jar -P ./$BUILDDIR/opt/wildfly/standalone/deployments/
+wget -qP ./$BUILDDIR/opt/wildfly/standalone/deployments/ https://www.aktin.org/software/repo/org/i2b2/1.7.12a/i2b2.war
+wget -qP ./$BUILDDIR/opt/wildfly/standalone/deployments/ https://jdbc.postgresql.org/download/postgresql-42.2.8.jar
 
 cp ./xml/* ./$BUILDDIR/opt/wildfly/standalone/deployments/
 cp ./aktin.properties ./$BUILDDIR/opt/wildfly/standalone/configuration/
