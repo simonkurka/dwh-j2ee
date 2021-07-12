@@ -3,6 +3,7 @@ set -e
 VERSION=$1
 BUILDDIR=aktin-dwh_$VERSION
 
+mkdir ./$BUILDDIR
 cp -r ./DEBIAN ./$BUILDDIR/DEBIAN
 
 #
