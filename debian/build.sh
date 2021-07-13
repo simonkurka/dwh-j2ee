@@ -50,7 +50,7 @@ sed -i 's/-Xms64m -Xmx512m/-Xms1024m -Xmx2g/' ./$BUILDDIR/opt/wildfly/bin/appcli
 sed -i 's/-Xms64m -Xmx512m/-Xms1014m -Xmx2g/' ./$BUILDDIR/opt/wildfly/bin/standalone.conf
 sed -i 's|<rotate-size value="50m"/>|<rotate-size value="1g"/>|' ./$BUILDDIR/opt/wildfly/bin/standalone.conf
 
-patch -p0 -d ./$BUILDDIR/opt/wildfly < ./standalone.xml.patch
+patch -p1 -d ./$BUILDDIR/opt/wildfly < ./standalone.xml.patch
 
 wget -qP ./$BUILDDIR/opt/wildfly/standalone/deployments/ https://www.aktin.org/software/repo/org/i2b2/1.7.12a/i2b2.war
 wget -qP ./$BUILDDIR/opt/wildfly/standalone/deployments/ https://jdbc.postgresql.org/download/postgresql-42.2.8.jar
