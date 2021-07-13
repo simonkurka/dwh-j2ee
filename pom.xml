@@ -5,7 +5,7 @@
 
     <groupId>org.aktin.dwh</groupId>
     <artifactId>dwh-j2ee</artifactId>
-    <version>1.56</version>
+    <version>1.57</version>
 
     <description>
         The data warehouse J2EE application contains

@@ -178,7 +178,7 @@ jobs:
           name: EAR
 
       - name: Upload Release EAR
-        id: upload-release-asset 
+        id: upload-release-ear
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -193,7 +193,7 @@ jobs:
           name: DEB
           
       - name: Upload Release DEB
-        id: upload-release-asset 
+        id: upload-release-deb
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
