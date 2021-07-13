@@ -53,6 +53,7 @@ jobs:
         run: |
           echo ::set-output name=repository::$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
+          echo ::set-output name=title::$(echo "${{ github.job }}" | cut -d'-' -f2)
 
       - name: Build and push docker image for ${{ github.job }}
         uses: docker/build-push-action@v2
@@ -60,8 +61,8 @@ jobs:
           context: docker/build/${{ github.job }}
           file: docker/build/${{ github.job }}/Dockerfile
           tags: |
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-$(echo ${{ github.job }} | cut -d'-' -f2):latest
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-$(echo ${{ github.job }} | cut -d'-' -f2):${{ steps.prep.outputs.version }}
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${{ steps.prep.outputs.title }}:latest
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${{ steps.prep.outputs.title }}:${{ steps.prep.outputs.version }}
           push: true
   docker-httpd:
     runs-on: ubuntu-latest
@@ -80,6 +81,7 @@ jobs:
         run: |
           echo ::set-output name=repository::$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
+          echo ::set-output name=title::$(echo "${{ github.job }}" | cut -d'-' -f2)
 
       - name: Build and push docker image for ${{ github.job }}
         uses: docker/build-push-action@v2
@@ -87,8 +89,8 @@ jobs:
           context: docker/build/${{ github.job }}
           file: docker/build/${{ github.job }}/Dockerfile
           tags: |
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-$(echo ${{ github.job }} | cut -d'-' -f2):latest
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-$(echo ${{ github.job }} | cut -d'-' -f2):${{ steps.prep.outputs.version }}
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${{ steps.prep.outputs.title }}:latest
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${{ steps.prep.outputs.title }}:${{ steps.prep.outputs.version }}
           push: true
   docker-wildfly:
     runs-on: ubuntu-latest
@@ -108,6 +110,7 @@ jobs:
         run: |
           echo ::set-output name=repository::$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
+          echo ::set-output name=title::$(echo "${{ github.job }}" | cut -d'-' -f2)
           
       - uses: actions/download-artifact@v2
         with:
@@ -120,8 +123,8 @@ jobs:
           context: docker/build/${{ github.job }}
           file: docker/build/${{ github.job }}/Dockerfile
           tags: |
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-$(echo ${{ github.job }} | cut -d'-' -f2):latest
-            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-$(echo ${{ github.job }} | cut -d'-' -f2):${{ steps.prep.outputs.version }}
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${{ steps.prep.outputs.title }}:latest
+            ghcr.io/${{ steps.prep.outputs.repository }}/dwh-j2ee-${{ steps.prep.outputs.title }}:${{ steps.prep.outputs.version }}
           push: true
   deb:
     runs-on: ubuntu-latest
