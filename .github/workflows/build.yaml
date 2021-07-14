@@ -52,7 +52,6 @@ jobs:
           tag_name: v${{ steps.prep.outputs.version }}
           prerelease: ${{ steps.prep.outputs.prerelease }}
           files: target/dwh-j2ee-${{ steps.prep.outputs.version }}.ear
-          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
