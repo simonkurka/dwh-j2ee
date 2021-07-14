@@ -49,8 +49,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         if: steps.prep.outputs.release == 'true'
         with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: ${{ steps.prep.outputs.prerelease }}
           files: target/dwh-j2ee-${{ steps.prep.outputs.version }}.ear
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
