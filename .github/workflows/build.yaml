@@ -46,10 +46,9 @@ jobs:
           path: target/dwh-j2ee-${{ steps.prep.outputs.version }}.ear
         
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: marvinpinto/action-automatic-releases@latest
         if: steps.prep.outputs.release == 'true'
         with:
-          tag_name: v${{ steps.prep.outputs.version }}
           prerelease: ${{ steps.prep.outputs.prerelease }}
           files: target/dwh-j2ee-${{ steps.prep.outputs.version }}.ear
         env:
